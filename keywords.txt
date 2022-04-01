@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map For FaruciFarmPwmDuoFan
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+FaruciFarmPwmDuoFan	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+PinSetup	        KEYWORD2
+VeryLow	            KEYWORD2
+Low	                KEYWORD2
+Medium	            KEYWORD2
+High	            KEYWORD2
+VeryHigh	        KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
