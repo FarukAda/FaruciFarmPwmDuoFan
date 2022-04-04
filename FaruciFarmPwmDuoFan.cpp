@@ -65,8 +65,8 @@ void FaruciFarmPwmDuoFan::High()
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 153);
-    analogWrite(ENB, 153);
+    analogWrite(ENA, 204);
+    analogWrite(ENB, 204);
     Serial.println("fanMode: High");
 }
 
@@ -76,7 +76,7 @@ void FaruciFarmPwmDuoFan::VeryHigh()
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 153);
-    analogWrite(ENB, 153);
+    analogWrite(ENA, 255);
+    analogWrite(ENB, 255);
     Serial.println("fanMode: VeryHigh");
 }
