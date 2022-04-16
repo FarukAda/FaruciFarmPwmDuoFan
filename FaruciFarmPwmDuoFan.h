@@ -11,14 +11,11 @@ private:
     int IN2;
     int IN3;
     int IN4;
+    int HFREQ;
 
 public:
     FaruciFarmPwmDuoFan(int enA, int enB, int in1, int in2, int in3, int in4);
     void PinSetup();
-    void VeryLow();
-    void Low();
-    void Medium();
-    void High();
-    void VeryHigh();
+    void SetFanspeedPercentage(int percentage);
 };
 #endif

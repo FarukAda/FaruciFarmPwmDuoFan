@@ -5,11 +5,12 @@ Had five different settings.
 Example:
 ```cpp
 #include <FaruciFarmPwmDuoFan.h>
+#define HFreq 40000
 
 /**
- * L298N constructor(enA, enB, in1, in2, in3, in4)
+ * L298N constructor(enA, enB, in1, in2, in3, in4, HFreq)
  */
-FaruciFarmPwmDuoFan faruciFarmPwmDuoFan(1,2,3,4,5,6);
+FaruciFarmPwmDuoFan faruciFarmPwmDuoFan(1,2,3,4,5,6,HFreq);
 
 void setup() {
   // Serial port for debugging purposes
@@ -21,14 +22,14 @@ void setup() {
 
 void loop() {
   delay(10000);
-  faruciFarmPwmDuoFan.VeryLow();
+  faruciFarmPwmDuoFan.SetFanspeedPercentage(20);
   delay(10000);
-  faruciFarmPwmDuoFan.Low();
+  faruciFarmPwmDuoFan.SetFanspeedPercentage(40);
   delay(10000);
-  faruciFarmPwmDuoFan.Medium();
+  faruciFarmPwmDuoFan.SetFanspeedPercentage(60);
   delay(10000);
-  faruciFarmPwmDuoFan.High();
+  faruciFarmPwmDuoFan.SetFanspeedPercentage(80);
   delay(10000);
-  faruciFarmPwmDuoFan.VeryHigh();
+  faruciFarmPwmDuoFan.SetFanspeedPercentage(100);
 }
 ```

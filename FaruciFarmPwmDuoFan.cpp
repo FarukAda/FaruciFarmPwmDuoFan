@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include "FaruciFarmPwmDuoFan.h"
-FaruciFarmPwmDuoFan::FaruciFarmPwmDuoFan(int enA, int enB, int in1, int in2, int in3, int in4)
+FaruciFarmPwmDuoFan::FaruciFarmPwmDuoFan(int enA, int enB, int in1, int in2, int in3, int in4, int hFreq)
 {
     ENA = enA;
     ENB = enB;
@@ -8,6 +8,7 @@ FaruciFarmPwmDuoFan::FaruciFarmPwmDuoFan(int enA, int enB, int in1, int in2, int
     IN2 = in2;
     IN3 = in3;
     IN4 = in4;
+    HFREQ = hFreq;
 }
 
 void FaruciFarmPwmDuoFan::PinSetup()
@@ -19,64 +20,39 @@ void FaruciFarmPwmDuoFan::PinSetup()
     pinMode(IN3, OUTPUT);
     pinMode(IN4, OUTPUT);
 
+    // Set frequentie and new range
+    analogWriteFreq(HFREQ);
+    analogWriteRange(100);
+
     // Turn off motors - Initial state
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-}
 
-void FaruciFarmPwmDuoFan::VeryLow()
-{
+    // Turn on motors
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 51);
-    analogWrite(ENB, 51);
-    Serial.println("fanMode: VeryLow");
 }
 
-void FaruciFarmPwmDuoFan::Low()
+void FaruciFarmPwmDuoFan::SetFanspeedPercentage(int percentage)
 {
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 102);
-    analogWrite(ENB, 102);
-    Serial.println("fanMode: Low");
-}
-
-void FaruciFarmPwmDuoFan::Medium()
-{
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 153);
-    analogWrite(ENB, 153);
-    Serial.println("fanMode: Medium");
-}
-
-void FaruciFarmPwmDuoFan::High()
-{
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 204);
-    analogWrite(ENB, 204);
-    Serial.println("fanMode: High");
-}
-
-void FaruciFarmPwmDuoFan::VeryHigh()
-{
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, HIGH);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, HIGH);
-    analogWrite(ENA, 255);
-    analogWrite(ENB, 255);
-    Serial.println("fanMode: VeryHigh");
+    if (isdigit(percentage))
+    {
+        if (101 > percentage > -1)
+        {
+            analogWrite(ENA, percentage);
+            analogWrite(ENB, percentage);
+        }
+        else
+        {
+            Serial.println("Error: input is not between 0 and 100!");
+        }
+    }
+    else
+    {
+        Serial.println("Error: input is not a number!");
+    }
 }

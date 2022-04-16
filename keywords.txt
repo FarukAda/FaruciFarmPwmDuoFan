@@ -12,12 +12,8 @@ FaruciFarmPwmDuoFan	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-PinSetup	        KEYWORD2
-VeryLow	            KEYWORD2
-Low	                KEYWORD2
-Medium	            KEYWORD2
-High	            KEYWORD2
-VeryHigh	        KEYWORD2
+PinSetup	            KEYWORD2
+SetFanspeedPercentage	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
